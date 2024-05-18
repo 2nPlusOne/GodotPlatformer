@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqqgyqafm7xwp"]
+[gd_scene load_steps=17 format=3 uid="uid://bqqgyqafm7xwp"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_ahusb"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="6_sdmev"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="7_ixpj3"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="8_4oh1e"]
+[ext_resource type="Script" path="res://objects/flag.gd" id="9_0trib"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="9_2fnpo"]
 [ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="9_fw1f5"]
 [ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="10_fwhys"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="13_drtpy"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m07vl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
 font = ExtResource("17_tk810")
@@ -78,6 +81,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21914, 1, -1.38292)
 
 [node name="flag" parent="World" instance=ExtResource("9_fw1f5")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3.48077, -6)
+script = ExtResource("9_0trib")
+
+[node name="Area3D" type="Area3D" parent="World/flag"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/flag/Area3D"]
+shape = SubResource("CapsuleShape3D_m07vl")
 
 [node name="coin" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.635, 0)
@@ -163,3 +172,5 @@ text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
+[connection signal="body_entered" from="World/flag/Area3D" to="Player" method="_on_flag_entered"]
+[connection signal="area_entered" from="World/coin7" to="World/flag" method="_on_coin_7_area_entered"]

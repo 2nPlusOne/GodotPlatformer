@@ -147,3 +147,7 @@ func collect_coin():
 	coins += 1
 	
 	coin_collected.emit(coins)
+
+
+func _on_flag_entered(body):
+	Audio.play("res://sounds/coin.ogg") # Play sound

@@ -151,3 +151,7 @@ func collect_coin():
 
 func _on_flag_entered(body):
 	Audio.play("res://sounds/coin.ogg") # Play sound
+	get_tree().change_scene_to_file.bind("res://scenes/Level3.tscn").call_deferred()
+
+ 
+	

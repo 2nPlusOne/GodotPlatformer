@@ -172,5 +172,5 @@ text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
-[connection signal="body_entered" from="World/flag/Area3D" to="Player" method="_on_flag_entered"]
+[connection signal="body_entered" from="World/flag/Area3D" to="World/flag" method="_on_flag_entered"]
 [connection signal="area_entered" from="World/coin7" to="World/flag" method="_on_coin_7_area_entered"]

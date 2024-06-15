@@ -1,6 +1,8 @@
+class_name Player
 extends CharacterBody3D
 
 signal coin_collected
+
 
 @export_subgroup("Components")
 @export var view: Node3D
@@ -149,9 +151,7 @@ func collect_coin():
 	coin_collected.emit(coins)
 
 
-func _on_flag_entered(body):
-	Audio.play("res://sounds/coin.ogg") # Play sound
-	get_tree().change_scene_to_file.bind("res://scenes/Level3.tscn").call_deferred()
+
 
  
 	

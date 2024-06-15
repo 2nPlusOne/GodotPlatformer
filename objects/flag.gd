@@ -1,11 +1,19 @@
 extends Node3D
 
+# const Player:= preload("player.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# prints("Flag created")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func _on_flag_entered(body):
+	if body is Player:
+		prints("Flag touched")
+		Audio.play("res://sounds/coin.ogg") # Play sound
+# get_tree().change_scene_to_file.bind("res://scenes/Level3.tscn").call_deferred()

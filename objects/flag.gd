@@ -1,6 +1,5 @@
 extends Node3D
 
-# @export_subgroup("Properties")
 @export var level := "res://scenes/Level3.tscn"
 # const Player:= preload("player.gd")
 

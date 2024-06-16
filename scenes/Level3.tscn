@@ -10,11 +10,13 @@
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_h2756")
 
-[node name="Player" parent="." instance=ExtResource("2_qco74")]
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_qco74")]
+view = NodePath("../View")
 
-[node name="View" type="Node3D" parent="."]
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
 script = ExtResource("3_qi4vt")
+target = NodePath("../Player")
 
 [node name="Camera" type="Camera3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -27,4 +29,4 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="platform" parent="." instance=ExtResource("4_tbcwh")]
-transform = Transform3D(0.66978, -0.738326, -0.0791791, 0.73322, 0.674444, -0.0866787, 0.117399, 0, 0.993085, 0, -1.6473, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6473, 0)

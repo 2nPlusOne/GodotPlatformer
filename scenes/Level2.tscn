@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="5_dnr1f"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="6_m2dqu"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="7_jnxcs"]
-[ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="8_l3go8"]
 [ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="9_fddcj"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="10_f7fc5"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_2eiaf"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="12_yh2gs"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="13_benpd"]
+[ext_resource type="PackedScene" uid="uid://otcejkjviweq" path="res://objects/flag.tscn" id="13_xum18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
 font = ExtResource("13_benpd")
@@ -83,9 +83,6 @@ transform = Transform3D(0.0936571, 0, -0.995605, 0, 1, 0, 0.995605, 0, 0.0936571
 [node name="platform-grass-large-round" parent="World" instance=ExtResource("7_jnxcs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2171, 1, -2.27892)
 
-[node name="flag" parent="World" instance=ExtResource("8_l3go8")]
-transform = Transform3D(0.196596, 0, 0.980485, 0, 1, 0, -0.980485, 0, 0.196596, -0.811253, 5.02773, -4.11807)
-
 [node name="coin3" parent="World" instance=ExtResource("9_fddcj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0416, 2.91024, -2.22603)
 
@@ -145,5 +142,8 @@ offset_right = 368.0
 offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
+
+[node name="flag" parent="." instance=ExtResource("13_xum18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727993, 5.07945, -4.07178)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
